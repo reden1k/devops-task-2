@@ -1,0 +1,8 @@
+---
+- name: Setup Redmine server
+  hosts: all
+  become: true
+
+  roles:
+    - docker
+    - redmine

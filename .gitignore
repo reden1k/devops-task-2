@@ -1,0 +1,30 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/terraform.tfvars
+**/.terraformrc
+**/crash.log
+**/crash.*.log
+**/*.tfplan
+
+# Ansible
+ansible/inventory/hosts.yml
+*.retry
+
+# SSH Keys
+*.pem
+*.pub
+id_*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

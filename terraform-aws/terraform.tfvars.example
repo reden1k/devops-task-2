@@ -1,0 +1,26 @@
+# AWS credentials
+aws_access_key = "your_aws_access_key"
+aws_secret_key = "your_aws_secret_key"
+
+# AWS region
+region = "eu-central-1"
+
+# AMI ID для Ubuntu 22.04 (зависит от региона!)
+# eu-central-1: ami-0a628e1e89aaedf80
+# us-east-1: ami-0866a3c8686eaeeba
+# Найти AMI: https://cloud-images.ubuntu.com/locator/ec2/
+ami_id = "ami-0a628e1e89aaedf80"
+
+# Instance type
+instance_type = "t3.small"
+
+# Использовать Elastic IP (рекомендуется для production)
+use_elastic_ip = true
+
+# SSH ключи
+ssh_public_key_path  = "~/.ssh/id_ed25519.pub"
+ssh_private_key_path = "~/.ssh/id_ed25519"
+
+# Домен и Route53 (опционально)
+domain           = ""
+route53_zone_id  = ""

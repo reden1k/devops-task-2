@@ -1,0 +1,36 @@
+---
+- name: Create redmine directory
+  file:
+    path: /opt/redmine
+    state: directory
+    mode: "0755"
+
+- name: Deploy docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/redmine/docker-compose.yml
+    mode: "0644"
+
+- name: Pull Docker images
+  community.docker.docker_compose_v2:
+    project_src: /opt/redmine
+    pull: always
+    state: absent  # просто pull без запуска
+
+- name: Start Redmine stack
+  community.docker.docker_compose_v2:
+    project_src: /opt/redmine
+    state: present
+
+- name: Wait for Redmine to be ready
+  wait_for:
+    port: "{{ redmine_port }}"
+    host: 127.0.0.1
+    delay: 10
+    timeout: 120
+
+- name: Install and configure nginx
+  import_tasks: nginx.yml
+
+- name: Setup UFW firewall
+  import_tasks: firewall.yml

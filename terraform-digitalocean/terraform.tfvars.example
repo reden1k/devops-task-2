@@ -1,0 +1,6 @@
+do_token             = "your_digitalocean_api_token_here"
+ssh_public_key_path  = "~/.ssh/id_ed25519.pub"
+ssh_private_key_path = "~/.ssh/id_ed25519"
+region               = "fra1"
+droplet_size         = "s-1vcpu-2gb"
+domain               = "redmine.yourdomain.com"  # optional

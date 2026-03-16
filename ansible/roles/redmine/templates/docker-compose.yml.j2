@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: {{ postgres_db }}
+      POSTGRES_USER: {{ postgres_user }}
+      POSTGRES_PASSWORD: {{ postgres_password }}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - redmine_net
+
+  redmine:
+    image: redmine:{{ redmine_version }}
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:{{ redmine_port }}:3000"
+    environment:
+      REDMINE_DB_POSTGRES: db
+      REDMINE_DB_DATABASE: {{ postgres_db }}
+      REDMINE_DB_USERNAME: {{ postgres_user }}
+      REDMINE_DB_PASSWORD: {{ postgres_password }}
+      REDMINE_SECRET_KEY_BASE: {{ redmine_secret_key }}
+    volumes:
+      - redmine_files:/usr/src/redmine/files
+      - redmine_plugins:/usr/src/redmine/plugins
+    networks:
+      - redmine_net
+
+volumes:
+  postgres_data:
+  redmine_files:
+  redmine_plugins:
+
+networks:
+  redmine_net:
+    driver: bridge

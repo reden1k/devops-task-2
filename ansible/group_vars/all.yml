@@ -1,0 +1,14 @@
+# Redmine settings
+redmine_version: "5.1"
+redmine_port: 3000
+
+# PostgreSQL settings
+postgres_db: redmine
+postgres_user: redmine
+postgres_password: "changeme_strong_password"
+
+# Domain (оставь пустым если нет домена)
+domain: ""
+
+# Redmine secret key (сгенерируй: openssl rand -hex 64)
+redmine_secret_key: "changeme_generate_with_openssl_rand_hex_64"

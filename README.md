@@ -7,7 +7,7 @@
 - Yandex Cloud
 - AWS
 
-Стек: Terraform → VM → Ansible → Docker (Redmine + PostgreSQL) + nginx
+Стек: Terraform -> VM -> Ansible -> Docker (Redmine + PostgreSQL) + nginx
 
 ## Что нужно
 
